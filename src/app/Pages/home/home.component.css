@@ -1,0 +1,178 @@
+/* Özel Renk Tanımları */
+.accent-text { color: var(--accent-purple) !important; }
+.bg-accent { background-color: var(--accent-purple) !important; color: white; }
+
+/* Navbar */
+.custom-navbar {
+  background-color: rgba(37, 37, 75, 0.5); /* Yarı saydam koyu renk */
+  backdrop-filter: blur(10px); /* Buzlu cam efekti */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem 0;
+  margin-bottom: 3rem; /* Alttaki boşluğu artırdık */
+}
+
+/* Butonlar */
+.btn-accent {
+  background-color: var(--accent-purple);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-accent:hover {
+  background-color: var(--accent-purple-dark);
+  transform: translateY(-2px);
+}
+
+/* İstatistik Kartları */
+.stat-card {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.stat-card h3 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-purple);
+}
+.stat-card p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Öğe Kartları */
+.item-card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  border-color: var(--accent-purple);
+}
+
+/* Etiketler (Badge) */
+.badge {
+  padding: 0.5em 0.8em;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Özel Select Kutusu */
+.custom-select {
+  background-color: var(--bg-main);
+  border: 1px solid var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+.custom-select:focus {
+  border-color: var(--accent-purple);
+  box-shadow: none;
+}
+
+/* Yıldızlar */
+.rating-stars i {
+  font-size: 1.1rem;
+  margin-right: 2px;
+  cursor: pointer;
+}
+/* --- MODAL TASARIMI --- */
+
+/* Arka plandaki siyah perde */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* %70 Siyahlık */
+    z-index: 1000; /* Her şeyin üstünde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Arka planı bulanıklaştır */
+}
+
+/* Modal Kutusu */
+.modal-box {
+    background-color: #1a1a2e; /* Koyu lacivert */
+    width: 100%;
+    max-width: 500px; /* Çok geniş olmasın */
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.3s ease-out; /* Açılış animasyonu */
+}
+
+/* Animasyon: Yukarıdan aşağı süzülme */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Input Alanları */
+.custom-input {
+    background-color: #13132b;
+    border: 1px solid #25254b;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+}
+.custom-input:focus {
+    background-color: #13132b;
+    border-color: var(--accent-purple);
+    color: white;
+    box-shadow: none;
+}
+
+/* Kapatma ikonu */
+.cursor-pointer {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.cursor-pointer:hover {
+    color: var(--accent-purple);
+}
+
+/* Kartın altındaki Save butonu için düzenleme */
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* --- INPUT VE SELECT YAZI AYARLARI --- */
+
+.custom-input, .custom-select {
+    color: #ffffff !important; /* İçine yazdığın yazı BEYAZ olsun */
+    background-color: #0f0f23 !important; /* Kutunun içi iyice koyu olsun */
+    border: 1px solid #2d2d55;
+}
+
+/* Placeholder (Örn: "e.g., One Piece" yazısı) Rengi */
+.custom-input::placeholder {
+    color: #9ca3af !important; /* Açık gri, rahat okunur */
+    opacity: 1;
+}
+
+/* Select kutusunu açınca çıkan seçenekler */
+option {
+    background-color: #1a1a2e;
+    color: white;
+}
+
+/* Inputa tıklayınca (Focus) */
+.custom-input:focus, .custom-select:focus {
+    background-color: #15152a !important;
+    border-color: var(--accent-purple);
+    color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(127, 90, 240, 0.2); /* Hafif mor parlama */
+}

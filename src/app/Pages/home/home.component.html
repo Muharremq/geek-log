@@ -1,0 +1,165 @@
+<nav class="navbar navbar-dark mb-5 custom-navbar">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <i class="bi bi-book-half fs-3 me-2 accent-text"></i>
+      <span class="fw-bold">GeekLog</span>
+    </a>
+    <button class="btn btn-accent" (click)="openModal()">
+      <i class="bi bi-plus-lg"></i> Add New
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row mb-5 g-3">
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <h3>{{ totalItems }}</h3>
+        <p>Total Items</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <h3>{{ toWatchCount }}</h3>
+        <p>To Watch</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <h3>{{ watchingCount }}</h3>
+        <p>Watching</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <h3>{{ doneCount }}</h3>
+        <p>Done</p>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mb-4 fw-bold">Your Collection</h4>
+
+  <div class="row g-4">
+    <div class="col-lg-4 col-md-6" *ngFor="let item of geekList">
+      <div class="item-card h-100 d-flex flex-column">
+        <div class="card-body p-4 flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title fw-bold mb-3">{{ item.title }}</h5>
+            <button
+              class="btn btn-sm text-danger p-0"
+              (click)="delete(item.id)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+
+          <div class="mb-4">
+            <span class="badge bg-accent me-2">{{ item.type }}</span>
+            <span
+              class="badge bg-secondary-subtle text-secondary-emphasis me-1"
+              *ngFor="let tag of item.additionalTags"
+              >{{ tag }}</span
+            >
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label text-secondary small mb-1">Status</label>
+            <select class="form-select custom-select" [(ngModel)]="item.status">
+              <option value="To Watch">To Watch</option>
+              <option value="Watching">Watching</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label text-secondary small mb-1">Rating</label>
+            <div class="rating-stars">
+              <i
+                class="bi"
+                *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                [ngClass]="
+                  i < item.rating
+                    ? 'bi-star-fill accent-text'
+                    : 'bi-star text-secondary'
+                "
+                (click)="setRating(item, i + 1)"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-3 border-top-0 bg-transparent text-end">
+          <button
+            class="btn btn-sm btn-outline-light w-100"
+            (click)="saveItem(item)"
+          >
+            <i class="bi bi-save me-1"></i> Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="isModalOpen">
+  <div class="modal-box">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold m-0">Add New Item</h4>
+      <i class="bi bi-x-lg cursor-pointer" (click)="closeModal()"></i>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small"
+        >Title <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control custom-input"
+        placeholder="e.g., One Piece"
+        [(ngModel)]="newItemTitle"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small"
+        >Type <span class="text-danger">*</span></label
+      >
+      <select class="form-select custom-select" [(ngModel)]="newItemType">
+        <option value="Anime">Anime</option>
+        <option value="Manga">Manga</option>
+        <option value="Film">Film</option>
+        <option value="Webtoon">Webtoon</option>
+        <option value="Manhwa">Manhwa</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small"
+        >Genre <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control custom-input"
+        placeholder="e.g., Action, Romance, Comedy"
+        [(ngModel)]="newItemGenre"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label text-secondary small">Status</label>
+      <select class="form-select custom-select" [(ngModel)]="newItemStatus">
+        <option value="To Watch">To Watch</option>
+        <option value="Watching">Watching</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-secondary w-50" (click)="closeModal()">
+        Cancel
+      </button>
+      <button class="btn btn-accent w-50" (click)="addItem()">Add Item</button>
+    </div>
+  </div>
+</div>

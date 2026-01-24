@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Değişkenler */
+:root {
+  --bg-main: #13132b; /* Daha koyu ana renk */
+  --bg-card: #25254b;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0c0;
+  --accent-purple: #7f5af0;
+}
+
+/* ÖNEMLİ: Bootstrap'i ezmek için !important kullanıyoruz */
+body {
+  /* Arka plana degrade ekleyelim */
+  background: linear-gradient(135deg, #13132b 0%, #1a1a2e 100%) !important;
+  background-attachment: fixed !important; /* Scroll yapınca arka plan sabit kalsın */
+  background-color: #13132b !important; /* Degrade çalışmazsa yedek renk */
+  
+  color: var(--text-primary) !important; /* Tüm yazıları beyaz yap */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Başlıkların rengini zorla beyaz yap */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+/* Scrollbar Tasarımı */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
